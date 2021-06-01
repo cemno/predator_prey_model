@@ -10,9 +10,9 @@ LotVmod <- function (Time, State, Pars) {
 
 Pars <- c(alpha = 2, beta = .5, gamma = .2, delta = .6)
 State <- c(x = 10, y = 10)
-Time <- seq(0, 100, by = 1)
+Time <- seq(0, 100, by = .1)
 
-out <- as.data.frame(ode(func = LotVmod, y = State, parms = Pars, times = Time))
+out <- as.data.frame(ode(func = LotVmod, y = State, parms = Pars, times = Time, method="rk4"))
 
 matplot(out[,-1], type = "l", xlab = "time", ylab = "population")
 legend("topright", c("Cute bunnies", "Rabid foxes"), lty = c(1,2), col = c(1,2), box.lwd = 0)
