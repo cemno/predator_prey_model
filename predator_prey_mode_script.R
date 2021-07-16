@@ -25,6 +25,9 @@ buying_rabbits_parameters <- read_ods("data/Simulation protocol for buying rabbi
 conditional_hunting_specific_days_parameters <- read_ods("data/Simulation protocol for conditional hunt foxes on specific days in the predator prey model.ods")
 fencing_parameters <- read_ods("data/Simulation protocol for fencing rabbits in the predator prey model.ods")
 
+unmodified_data <- read_csv("data/table_unmodified.csv")
+unmodified_data <- rename(unmodified_data, days = "Time \\ Name", foxes = "A", rabbits = "B")
+unmodified_data <- pivot_longer(data = unmodified_data, cols = c("foxes", "rabbits"), names_to = "Population")
 conditional_hunting_data <- read_csv("data/table_conditional_hunting.csv")
 conditional_hunting_data <- rename(conditional_hunting_data, days = "Time \\ Name", foxes = "A", rabbits = "B")
 conditional_hunting_data <- pivot_longer(data = conditional_hunting_data, cols = c("foxes", "rabbits"), names_to = "Population")
@@ -39,6 +42,14 @@ fencing_data <- rename(fencing_data, days = "Time \\ Name", foxes = "A", rabbits
 fencing_data <- pivot_longer(data = fencing_data, cols = c("foxes", "rabbits"), names_to = "Population")
 
 
+
+unmodified <- ggplot(unmodified_data, aes(x = days, y = value, group = Population, color = Population))+
+  geom_line()+
+  scale_color_manual(values = c("#b84646", "#197ab6"))+
+  ylab("population size")+
+  ggtitle("Predator-Prey population model")
+unmodified
+ggsave("graphs/unmodified.png", height = 5, width = 7)
 
 conditional_hunting <- ggplot(conditional_hunting_data, aes(x = days, y = value, group = Population, color = Population))+
   geom_line()+
