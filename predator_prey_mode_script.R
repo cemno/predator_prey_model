@@ -71,7 +71,7 @@ conditional_hunting_specific_days <- ggplot(conditional_hunting_specific_days_da
   geom_line()+
   scale_color_manual(values = c("#b84646", "#197ab6"))+
   ylab("population size")+
-  ggtitle("Conditional hunting on weekends of foxes")
+  ggtitle("Conditional hunting of foxes on weekends")
 conditional_hunting_specific_days
 ggsave("graphs/conditional_hunting_specific_days.png", height = 5, width = 7)
 
