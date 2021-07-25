@@ -17,7 +17,7 @@ Time <- seq(0, 100, by = .1)
 out <- as.data.frame(ode(func = LotVmod, y = State, parms = Pars, times = Time, method="rk4"))
 
 matplot(out[,-1], type = "l", xlab = "time", ylab = "population")
-legend("topright", c("Cute bunnies", "Rabid foxes"), lty = c(1,2), col = c(1,2), box.lwd = 0)
+legend("topright", c("Rabbits", "Foxes"), lty = c(1,2), col = c(1,2), box.lwd = 0)
 
 
 conditional_hunting_parameters <- read_ods("data/Simulation protocol for a conditional hunt of foxes in the predator prey model.ods")
